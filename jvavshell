@@ -19,7 +19,7 @@ MAIN(){
     jvav.system.get.arch*) echo -e "$(uname -m)";;
     jvav.system.get.hostname*) echo -e "$(hostname)";;
     "") printf "";;
-    *) bash -c "$COMMAND" || echo -e "ERR:unknow command";;
+    *) bash -c "$COMMAND" || echo -e "\e[31mERROR:Unknown command or syntax error";;
   esac
 }
 while :
