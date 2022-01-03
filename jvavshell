@@ -12,6 +12,7 @@ MAIN(){
     jvav.system.sleep*) sleep $COMMAND_CUT;;
     jvav.system.get.file*) cat $COMMAND_CUT;;
     jvav.system.exec*) bash -c "$COMMAND_CUT";;
+    jvav.version*) echo -e "Jvav 1.1-dev\ncopyright 2022 Dr. HaoYang Zhang";;
     jvav.clear*) clear;;
     "") printf "";;
     *) bash -c "$COMMAND" || echo -e "ERR:unknow command";;
