@@ -1,0 +1,25 @@
+#!/bin/bash
+echo -e "\e[38;5;123mJvav 1.1-dev "
+echo -e "$(date)"
+echo -e "copyright 2022 Dr. HaoYang Zhang"
+echo -e "Stay stupid,stay useless."
+echo -e ""
+MAIN(){
+  COMMAND_CUT=$(echo $COMMAND|cut -d "[" -f 2 |cut -d ']' -f 1) >> /dev/null
+  case $COMMAND in
+    jvav.system.print*) echo $COMMAND_CUT;;
+    jvav.system.exit**) exit $COMMAND_CUT;;
+    jvav.system.sleep*) sleep $COMMAND_CUT;;
+    jvav.system.get.file*) cat $COMMAND_CUT;;
+    jvav.system.exec*) bash -c "$COMMAND_CUT";;
+    jvav.clear*) clear;;
+    "") printf "";;
+    *) bash -c "$COMMAND" || echo -e "ERR:unknow command";;
+  esac
+}
+while :
+do
+  printf "\e[38;5;123m"
+  read -p "JvavShell >> " COMMAND
+  MAIN
+done
