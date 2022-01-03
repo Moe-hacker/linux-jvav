@@ -10,10 +10,14 @@ MAIN(){
     jvav.system.print*) echo $COMMAND_CUT;;
     jvav.system.exit**) exit $COMMAND_CUT;;
     jvav.system.sleep*) sleep $COMMAND_CUT;;
-    jvav.system.get.file*) cat $COMMAND_CUT;;
     jvav.system.exec*) bash -c "$COMMAND_CUT";;
     jvav.version*) echo -e "Jvav 1.1-dev\ncopyright 2022 Dr. HaoYang Zhang";;
     jvav.clear*) clear;;
+    jvav.system.get.file*) cat $COMMAND_CUT;;
+    jvav.system.get.time*) echo -e "$(date|awk '{print $5}')";;
+    jvav.system.get.kernel*) echo -e "$(uname --kernel-release)";;
+    jvav.system.get.arch*) echo -e "$(uname -m)";;
+    jvav.system.get.hostname*) echo -e "$(hostname)";;
     "") printf "";;
     *) bash -c "$COMMAND" || echo -e "ERR:unknow command";;
   esac
