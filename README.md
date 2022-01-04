@@ -12,7 +12,9 @@ Jvav 是一项用于开发迷你世界的技术，可以让 Web 变得更有意�
 ### 什么是jvavshell?
 JvavShell是jvav语言的命令行，你可以在这里方便的调试jvav语法，虽然它和jvav并不兼容。
 ### 如何安装？
-只支持linux。
+只支持linux。   
+安装依赖软件pv, hexdump
+
 ```shell
 git clone https://github.com/Moe-hacker/jvavshell
 cd jvavshell
