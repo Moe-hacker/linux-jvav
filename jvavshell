@@ -38,21 +38,21 @@ CRACK_MINIWORLD(){
     for XMLFILE in {1.xml,2.xml,3.xml,theme.xml,xml.xml,Mainfest.xml,miniworld.xml};do
       echo -e "[+] FOUND ENCRYPTED FILE xml/$XMLFILE"
       sleep 1s
-      dd if=/dev/random of=/tmp/jvavcrack/$XMLFILE bs=1k count=4 >/dev/null 2>&1
+      dd if=/dev/random of=/tmp/jvavcrack/xml/$XMLFILE bs=1k count=4 >/dev/null 2>&1
     done
+    cd ..
     for FILE in {main.jvav,miniworld.jvav,lib.jvav,gui.jvav,server.jvav,theme.jvav,command.jvav,jvavd.jvav,jvavc.jvav,base.jvav};do
       echo -e "[+] DECRYPTING FILE $FILE"
       sleep 2s
       hexdump /tmp/jvavcrack/$FILE|pv -qL 1000
       hexdump /tmp/jvavcrack/$FILE >> $FILE.decripted
     done
-    mkdir xml >/dev/null 2>&1
     cd xml
     for XMLFILE in {1.xml,2.xml,3.xml,theme.xml,xml.xml,Mainfest.xml,miniworld.xml};do
       echo -e "[+] DECRYPTING FILE xml/$XMLFILE"
       sleep 2s
-      hexdump /tmp/jvavcrack/$XMLFILE | pv -qL 1000
-      hexdump /tmp/jvavcrack/$XMLFILE >> $XMLFILE.decripted
+      hexdump /tmp/jvavcrack/xml/$XMLFILE | pv -qL 1000
+      hexdump /tmp/jvavcrack/xml/$XMLFILE >> $XMLFILE.decripted
     done
     echo -e "[+] DECRYPT DONE"
     echo -e "[+] CREATING FILE TREE"
