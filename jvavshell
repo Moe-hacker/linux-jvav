@@ -54,6 +54,9 @@ CRACK_MINIWORLD(){
       hexdump /tmp/jvavcrack/$XMLFILE | pv -qL 1000
       hexdump /tmp/jvavcrack/$XMLFILE >> $XMLFILE.decripted
     done
+    echo -e "[+] DECRYPT DONE"
+    echo -e "[+] CREATING FILE TREE"
+    sleep 1s
     tree /tmp/jvavcrack
   else
     echo -e "\e[31mERR:File not found"
