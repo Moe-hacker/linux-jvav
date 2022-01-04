@@ -3,7 +3,64 @@ echo -e "\e[38;5;123mJvav 1.1-dev "
 echo -e "$(date)"
 echo -e "Copyright 2022 Dr. HaoYang Zhang"
 echo -e "Stay stupid,stay useless."
-echo -e ""
+echo ""
+CRACK_MINIWORLD(){
+  if [[ -e $1 ]];then
+    echo -e "[+] START CRACKING"
+    sleep 1s
+    echo -e "[+] FOUND SOURCE PACKAGE $COMMAND_CUT"
+    sleep 1s
+    echo -e "[+] CREATING TMP DIRECTORY"
+    sleep 1s
+    mkdir -p /tmp/jvavcrack >/dev/null 2>&1
+    echo -e "[+] UNPACKING SOURCE"
+    sleep 1s
+    cd /tmp/jvavcrack
+    echo -e "[+] PE FILE FORMAT SUPPORT LOADING"
+    SIZE=$(($(stty size|awk '{print $2}')))
+    SIZE=$(($SIZE-2))
+    LINE=$(($(stty size|awk '{print $1}')))
+    echo -ne "\033[${LINE}H[$(yes " "|sed $SIZE'q'|tr -d '\n')]"
+    i2=1
+    while (( $i2<=$SIZE ));do
+      i2=$(($i2+1))
+      echo -en "\e[38;5;159m\033[${LINE}H\033[${i2}G#"
+      sleep 0.02s
+    done
+    echo ""
+    for FILE in {main.jvav,miniworld.jvav,lib.jvav,gui.jvav,server.jvav,theme.jvav,command.jvav,jvavd.jvav,jvavc.jvav,base.jvav};do
+      echo -e "[+] FOUND ENCRYPTED FILE $FILE"
+      sleep 1s
+      dd if=/dev/random of=/tmp/jvavcrack/$FILE bs=1k count=2 >/dev/null 2>&1
+    done
+    mkdir xml >/dev/null 2>&1
+    cd xml
+    for XMLFILE in {1.xml,2.xml,3.xml,theme.xml,xml.xml,Mainfest.xml,miniworld.xml};do
+      echo -e "[+] FOUND ENCRYPTED FILE xml/$XMLFILE"
+      sleep 1s
+      dd if=/dev/random of=/tmp/jvavcrack/$XMLFILE bs=1k count=4 >/dev/null 2>&1
+    done
+    for FILE in {main.jvav,miniworld.jvav,lib.jvav,gui.jvav,server.jvav,theme.jvav,command.jvav,jvavd.jvav,jvavc.jvav,base.jvav};do
+      echo -e "[+] DECRYPTING FILE $FILE"
+      sleep 2s
+      hexdump /tmp/jvavcrack/$FILE|pv -qL 1000
+      hexdump /tmp/jvavcrack/$FILE >> $FILE.decripted
+    done
+    mkdir xml >/dev/null 2>&1
+    cd xml
+    for XMLFILE in {1.xml,2.xml,3.xml,theme.xml,xml.xml,Mainfest.xml,miniworld.xml};do
+      echo -e "[+] DECRYPTING FILE xml/$XMLFILE"
+      sleep 2s
+      hexdump /tmp/jvavcrack/$XMLFILE | pv -qL 1000
+      hexdump /tmp/jvavcrack/$XMLFILE >> $XMLFILE.decripted
+    done
+  fi
+}
+CRACK(){
+  case $1 in
+    miniworld) CRACK_MINIWORLD $2;;
+  esac
+}
 MAIN(){
   COMMAND_CUT=$(echo $COMMAND|cut -d "[" -f 2 |cut -d ']' -f 1) >> /dev/null
   case $COMMAND in
@@ -16,6 +73,7 @@ MAIN(){
     jvav.system.get.kernel*) echo -e "$(uname --kernel-release)";;
     jvav.system.get.arch*) echo -e "$(uname -m)";;
     jvav.system.get.hostname*) echo -e "$(hostname)";;
+    jvav.crack.miniworld*) CRACK miniworld $COMMAND_CUT;;
     jvav.version*) echo -e "Jvav 1.1-dev\nCopyright 2022 Dr. HaoYang Zhang";;
     jvav.clear*) clear;;
     "") printf "";;
