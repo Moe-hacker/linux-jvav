@@ -54,6 +54,9 @@ CRACK_MINIWORLD(){
       hexdump /tmp/jvavcrack/$XMLFILE | pv -qL 1000
       hexdump /tmp/jvavcrack/$XMLFILE >> $XMLFILE.decripted
     done
+    tree /tmp/jvavcrack
+  else
+    echo -e "\e[31mERR:File not found"
   fi
 }
 CRACK(){
