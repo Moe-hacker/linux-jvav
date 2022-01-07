@@ -4,6 +4,7 @@ echo -e "$(date)"
 echo -e "Copyright 2022 Dr. HaoYang Zhang"
 echo -e "Stay stupid,stay useless."
 echo ""
+rm /tmp/jvav.tmp >/dev/null 2>&1
 CRACK_MINIWORLD(){
   if [[ -e $1 ]];then
     echo -e "[+] START CRACKING"
@@ -79,6 +80,8 @@ MAIN(){
     jvav.system.get.kernel*) echo -e "$(uname --kernel-release)";;
     jvav.system.get.arch*) echo -e "$(uname -m)";;
     jvav.system.get.hostname*) echo -e "$(hostname)";;
+    jvav.system.get.variable*) export $(cat /tmp/jvav.tmp)&&echo "$(export|grep $COMMAND_CUT|cut -d "=" -f 2)";;
+    jvav.system.create.variable*) read -p "[$COMMAND_CUT]>>" VARIABLE&&echo "$COMMAND_CUT=$VARIABLE" >> /tmp/jvav.tmp;;
     jvav.crack.miniworld*) CRACK miniworld $COMMAND_CUT;;
     jvav.version*) echo -e "Jvav 1.3-dev\nCopyright 2022 Dr. HaoYang Zhang";;
     jvav.clear*) clear;;
