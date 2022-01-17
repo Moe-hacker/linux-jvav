@@ -23,5 +23,35 @@ cd ..
 rm -rf jvavshell
 ```   
 ### 语法：
-咕咕咕，下次再写
-目前只能告诉你可以像shell一样运行
+#### 高级语法，因为看起来高级：
+```shell
+jvav.system.exit[参数]
+以这个参数的状态退出
+jvav.system.print[内容]
+输出方框内内容
+jvav.system.sleep[时长]
+休眠终端
+jvav.system.exec[命令]
+执行命令
+jvav.system.get.file[文件]
+获取文件内容
+jvav.system.get.time[]
+获取当前时间
+jvav.system.get.kernel[]
+获取内核版本
+jvav.system.get.arch[]
+获取系统架构
+jvav.system.get.hostname[]
+获取主机名
+jvav.system.get.variable[变量名]
+获取变量信息
+jvav.system.create.variable[变量名]
+创建一个变量
+jvav.crack.miniworld[miniword.exe]
+假装破解项目中的.exe假文件
+jvav.version[]
+获取版本信息
+jvav.clear[]
+清屏
+```
+#### 低级语法，可直接执行命令，就像普通sheel
