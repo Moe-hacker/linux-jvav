@@ -47,7 +47,7 @@ jvav.system.get.variable[变量名]
 获取变量信息
 jvav.system.create.variable[变量名]
 创建一个变量
-jvav.crack.miniworld[miniword.exe]
+jvav.crack.miniworld[miniworld.exe]
 假装破解项目中的.exe假文件
 jvav.version[]
 获取版本信息
