@@ -18,9 +18,7 @@ JvavShell是jvav语言的命令行，你可以在这里方便的调试jvav语法
 ```shell
 git clone https://github.com/Moe-hacker/jvavshell
 cd jvavshell
-mv jvavshell /usr/local/bin
-cd ..
-rm -rf jvavshell
+./jvavshell
 ```   
 ### 语法：
 #### 高级语法，因为看起来高级：
