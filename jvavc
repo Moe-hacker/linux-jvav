@@ -1,0 +1,36 @@
+#!bash
+OUTPUT_FILE=a.out
+if [[ $2 != "" ]];then
+  OUTPUT_FILE=$2
+fi
+if [[ -e $OUTPUT_FILE ]];then
+  rm $OUTPUT_FILE -f
+fi
+if [[ ! -e $1 ]];then
+  echo "usage:"
+  echo "  jvavc [file] [output file]"
+  exit
+else
+  touch $OUTPUT_FILE
+fi
+for i in $(cat $1)
+do
+  COMMAND_CUT=$(echo $i|cut -d "[" -f 2 |cut -d ']' -f 1) >> /dev/null
+  case $i in
+    jvav.system.print*) echo "echo $COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.exit*) echo "exit $COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.sleep*) echo "sleep $COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.exec*) echo "$COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.get.file*) echo "cat $COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.get.time*) echo "date" >> $OUTPUT_FILE;;
+    jvav.system.get.kernel*) echo  "uname --kernel-release" >> $OUTPUT_FILE;;
+    jvav.system.get.arch*) echo  "uname -m" >> $OUTPUT_FILE;;
+    jvav.system.get.hostname*) echo "hostname" >> $OUTPUT_FILE;;
+    jvav.system.get.variable*) echo "echo \$$COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.system.create.variable*) echo "export $COMMAND_CUT" >> $OUTPUT_FILE;;
+    jvav.clear*) echo "clear" >> $OUTPUT_FILE;;
+    *) echo $i >> $OUTPUT_FILE
+  esac
+done
+chmod 777 $OUTPUT_FILE
+echo "compile done!"
