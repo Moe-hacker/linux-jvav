@@ -54,10 +54,12 @@ jvav.clear[]
 ```
 #### 低级语法，和shell一样
 ### 什么是jvavc?
-Jvavc是jvav语言的编译器，可以将jvav语言编译为shell.
+Jvavc是jvav语言的编译器，可以将jvav语言编译为shell,默认输出文件为a.out
 ### 用法:
 ```
 ./jvavc [jvav文件] [输出文件]
+例如:
+./jvavc example.jvav
 ```
 ### 语法：
 #### 高级语法，因为看起来高级：
