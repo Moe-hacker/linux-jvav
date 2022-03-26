@@ -61,7 +61,8 @@ Jvavc是jvav语言的编译器，可以将jvav语言编译为shell,默认输出�
 例如:
 ./jvavc example.jvav
 ```
-### 语法：
+### 语法：      
+#### 高级语法，因为看起来高级：
 ```shell
 jvav.system.exit[参数]
 #以这个参数的状态退出
