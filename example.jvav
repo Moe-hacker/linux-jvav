@@ -1,6 +1,6 @@
 jvav.clear[]
 jvav.system.sleep[1s]
-jvav.system.print[FUCK]
+jvav.system.print[helloworld]
 jvav.system.exec[ls]
 jvav.system.get.file[example.jvav]
 jvav.system.get.time[]
@@ -9,3 +9,4 @@ jvav.system.get.arch[]
 jvav.system.get.hostname[]
 jvav.system.create.variable[FUCK=fuck]
 jvav.system.get.variable[FUCK]
+echo "helloworld"

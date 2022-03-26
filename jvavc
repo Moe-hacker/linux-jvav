@@ -20,7 +20,7 @@ echo -e "Stay stupid,stay useless."
 echo -e ""
 echo -e "Compiling......"
 echo -e ""
-for i in $(cat $1)
+cat $1|while read i
 do
   echo " + ${i}"
   sleep 0.2s
