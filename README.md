@@ -53,6 +53,8 @@ jvav.version[]
 #获取版本信息
 jvav.clear[]
 #清屏
+//注释内容
+#注释
 ```
 #### 低级语法，和shell一样
 ### 什么是jvavc?
@@ -90,5 +92,7 @@ jvav.system.create.variable[变量名]
 #创建一个变量
 jvav.clear[]
 #清屏
+//注释内容
+#注释
 ```
 #### 低级语法，和shell一样,会被直接写入output文件

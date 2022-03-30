@@ -10,3 +10,4 @@ jvav.system.get.hostname[]
 jvav.system.create.variable[FUCK=fuck]
 jvav.system.get.variable[FUCK]
 echo "helloworld"
+//这是一个注释

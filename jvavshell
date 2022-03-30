@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e "\e[38;5;123mJvav 1.4"
+echo -e "\e[38;5;123mJvav 1.5"
 echo -e "$(date)"
 echo -e "Copyright 2022 Dr. HaoYang Zhang"
 echo -e "Stay stupid,stay useless."
@@ -85,6 +85,7 @@ MAIN(){
     jvav.crack.miniworld*) CRACK miniworld $COMMAND_CUT;;
     jvav.version*) echo -e "Jvav 1.3-dev\nCopyright 2022 Dr. HaoYang Zhang";;
     jvav.clear*) clear;;
+    //*) printf "";;
     "") printf "";;
     *) bash -c "$COMMAND" || echo -e "\e[31mERROR:Unknown command or syntax error";;
   esac

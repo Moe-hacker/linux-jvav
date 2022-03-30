@@ -13,16 +13,21 @@ if [[ ! -e $1 ]];then
 else
   touch $OUTPUT_FILE
 fi
-echo -e "\e[38;5;123mJvav 1.4"
+echo -e "\e[38;5;123mJvav 1.5"
 echo -e "$(date)"
 echo -e "Copyright 2022 Dr. HaoYang Zhang"
 echo -e "Stay stupid,stay useless."
 echo -e ""
 echo -e "Compiling......"
 echo -e ""
+sleep 1s
 cat $1|while read i
 do
-  echo " + ${i}"
+  if [[ $i != //* ]];then
+    echo " + ${i}"
+  else
+    echo " - ${i}"
+  fi
   sleep 0.2s
   COMMAND_CUT=$(echo $i|cut -d "[" -f 2 |cut -d ']' -f 1) >> /dev/null
   case $i in
@@ -38,6 +43,7 @@ do
     jvav.system.get.variable*) echo "echo \$$COMMAND_CUT" >> $OUTPUT_FILE;;
     jvav.system.create.variable*) echo "export $COMMAND_CUT" >> $OUTPUT_FILE;;
     jvav.clear*) echo "clear" >> $OUTPUT_FILE;;
+    //*) printf "";;
     *) echo $i >> $OUTPUT_FILE
   esac
 done
