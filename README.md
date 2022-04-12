@@ -2,6 +2,8 @@
 
 ------------
 
+(萌新出品，必是废品)
+
 「这仅仅是一个梗，而并非是一个真实存在的编程语言。」
 
 ![](https://github.com/Moe-hacker/jvavshell/raw/main/jvav.png)
